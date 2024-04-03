@@ -3,18 +3,18 @@
   Доповніть цю функцію, використовуючи generics, щоб вона повертала правильний тип.
 */
 
-function getPromise<T>() {
-  return new Promise<T[]>((resolve) => {
-    resolve(['Text', 50] as T[]);
+function getPromise<T extends [string, number]>(): Promise<T> {
+  return new Promise((resolve) => {
+    resolve(['Text', 50] as T);
   });
 }
 
-getPromise<string>()
+getPromise()
   .then((data) => {
     console.log(data); // Виводить ['Text', 50]
 });
 
-getPromise<number>()
+getPromise()
   .then((data) => {
     console.log(data); // Виводить ['Text', 50]
 });
